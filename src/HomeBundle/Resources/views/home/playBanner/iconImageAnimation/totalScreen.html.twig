@@ -1,0 +1,24 @@
+<script>
+    var totalScreenIconAnimation = document.getElementById('totalScreenIconAnimation');
+    var totalScreenIconDiv = document.getElementById('totalScreenIconDiv');
+
+    totalScreenIconDiv.addEventListener("mouseout", totalScreenIconOut, false);
+    totalScreenIconDiv.addEventListener("mouseover", totalScreenIconOver, false);
+    totalScreenIconDiv.addEventListener("click", showTotalScreenArea, false);
+
+    function totalScreenIconOut()
+    {
+        totalScreenIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/playBanner/totalScreen.png' alt='Mountain View'>";
+    }
+
+    function totalScreenIconOver()
+    {
+        totalScreenIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/playBanner/totalScreenOver.png' alt='Mountain View'>";
+    }
+    
+    function showTotalScreenArea()
+    {
+{#        alert("form here to create new icon... ");#}
+        
+    }
+</script>

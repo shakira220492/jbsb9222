@@ -1,0 +1,23 @@
+<script>
+    var videoIconAnimation = document.getElementById('videoIconAnimation');
+    var videoIconDiv = document.getElementById('videoIconDiv');
+
+    videoIconDiv.addEventListener("mouseout", videoIconOut, false);
+    videoIconDiv.addEventListener("mouseover", videoIconOver, false);
+    videoIconDiv.addEventListener("click", showVideoArea, false);
+
+    function videoIconOut()
+    {
+        videoIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/presentation/video.png' alt='Mountain View'>";
+    }
+
+    function videoIconOver()
+    {
+        videoIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/presentation/videoOver.png' alt='Mountain View'>";
+    }
+    
+    function showVideoArea()
+    {
+{#        alert("verification function");#}
+    }
+</script>

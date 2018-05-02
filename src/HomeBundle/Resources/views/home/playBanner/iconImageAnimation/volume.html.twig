@@ -1,0 +1,24 @@
+<script>
+    var volumeIconAnimation = document.getElementById('volumeIconAnimation');
+    var volumeIconDiv = document.getElementById('volumeIconDiv');
+
+    volumeIconDiv.addEventListener("mouseout", volumeIconOut, false);
+    volumeIconDiv.addEventListener("mouseover", volumeIconOver, false);
+    volumeIconDiv.addEventListener("click", showVolumeArea, false);
+
+    function volumeIconOut()
+    {
+        volumeIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/playBanner/volume.png' alt='Mountain View'>";
+    }
+
+    function volumeIconOver()
+    {
+        volumeIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/playBanner/volumeOver.png' alt='Mountain View'>";
+    }
+    
+    function showVolumeArea()
+    {
+{#        alert("form here to create new icon... ");#}
+        
+    }
+</script>

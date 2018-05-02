@@ -1,0 +1,40 @@
+<div id='captionsIconAnimation'
+     style="position: absolute;
+     height: 30px;
+     width: 30px;
+     top: 0px;
+     left: 120px;
+     z-index: 1;
+     transition-property: all;
+     transition-duration: 1s;">
+    <img style='
+         width:30px; 
+         height:30px; 
+         opacity: 0.9;
+         z-index: 1;' 
+         src="files/images/icons/playBanner/captions.png" alt="Mountain View">
+</div>
+
+<div id='captionsIconDiv'
+     style="position: absolute;
+     height: 30px;
+     width: 30px;
+     top: 0px;
+     left: 120px;
+     z-index: 1;
+     transition-property: all;
+     transition-duration: 1s;">
+</div>
+
+<script>
+    var captionsIconDiv = document.getElementById("captionsIconDiv");
+    
+    captionsIconDiv.addEventListener("click", function () {
+        captionsIconFunction();
+    });
+    
+    function captionsIconFunction()
+    {
+        alert("CAPTIONS ICON!!! FUNCTION....");
+    }
+</script>

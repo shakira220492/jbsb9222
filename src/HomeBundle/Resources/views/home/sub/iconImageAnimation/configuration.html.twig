@@ -1,0 +1,23 @@
+<script>
+    var configurationIconAnimation = document.getElementById('configurationIconAnimation');
+    var configurationIconDiv = document.getElementById('configurationIconDiv');
+
+    configurationIconDiv.addEventListener("mouseout", configurationIconOut, false);
+    configurationIconDiv.addEventListener("mouseover", configurationIconOver, false);
+    configurationIconDiv.addEventListener("click", showConfigurationArea, false);
+
+    function configurationIconOut()
+    {
+        configurationIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/presentation/configuration.png' alt='Mountain View'>";
+    }
+
+    function configurationIconOver()
+    {
+        configurationIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/presentation/configurationOver.png' alt='Mountain View'>";
+    }
+    
+    function showConfigurationArea()
+    {
+{#        alert("verification function");#}
+    }
+</script>

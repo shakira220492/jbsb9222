@@ -1,0 +1,23 @@
+<script>
+    var editIconAnimation = document.getElementById('editIconAnimation');
+    var editIconDiv = document.getElementById('editIconDiv');
+
+    editIconDiv.addEventListener("mouseout", editIconOut, false);
+    editIconDiv.addEventListener("mouseover", editIconOver, false);
+    editIconDiv.addEventListener("click", showEditArea, false);
+
+    function editIconOut()
+    {
+        editIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/configuration/edit.png' alt='Mountain View'>";
+    }
+
+    function editIconOver()
+    {
+        editIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/configuration/editOver.png' alt='Mountain View'>";
+    }
+    
+    function showEditArea()
+    {
+{#        alert("verification function");#}
+    }
+</script>

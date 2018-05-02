@@ -1,0 +1,24 @@
+<script>
+    var createIconAnimation = document.getElementById('createIconAnimation');
+    var createIconDiv = document.getElementById('createIconDiv');
+
+    createIconDiv.addEventListener("mouseout", createIconOut, false);
+    createIconDiv.addEventListener("mouseover", createIconOver, false);
+    createIconDiv.addEventListener("click", showCreateArea, false);
+
+    function createIconOut()
+    {
+        createIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/presentation/create.png' alt='Mountain View'>";
+    }
+
+    function createIconOver()
+    {
+        createIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/presentation/createOver.png' alt='Mountain View'>";
+    }
+    
+    function showCreateArea()
+    {
+{#        alert("form here to create new icon... ");#}
+        
+    }
+</script>

@@ -1,0 +1,24 @@
+<script>
+    var speedIconAnimation = document.getElementById('speedIconAnimation');
+    var speedIconDiv = document.getElementById('speedIconDiv');
+
+    speedIconDiv.addEventListener("mouseout", speedIconOut, false);
+    speedIconDiv.addEventListener("mouseover", speedIconOver, false);
+    speedIconDiv.addEventListener("click", showSpeedArea, false);
+
+    function speedIconOut()
+    {
+        speedIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/playBanner/speed.png' alt='Mountain View'>";
+    }
+
+    function speedIconOver()
+    {
+        speedIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/playBanner/speedOver.png' alt='Mountain View'>";
+    }
+    
+    function showSpeedArea()
+    {
+{#        alert("form here to create new icon... ");#}
+        
+    }
+</script>

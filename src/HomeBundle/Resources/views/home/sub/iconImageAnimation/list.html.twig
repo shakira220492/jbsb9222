@@ -1,0 +1,23 @@
+<script>
+    var listIconAnimation = document.getElementById('listIconAnimation');
+    var listIconDiv = document.getElementById('listIconDiv');
+
+    listIconDiv.addEventListener("mouseout", listIconOut, false);
+    listIconDiv.addEventListener("mouseover", listIconOver, false);
+    listIconDiv.addEventListener("click", showListArea, false);
+
+    function listIconOut()
+    {
+        listIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/presentation/list.png' alt='Mountain View'>";
+    }
+
+    function listIconOver()
+    {
+        listIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/presentation/listOver.png' alt='Mountain View'>";
+    }
+    
+    function showListArea()
+    {
+{#        alert("verification function");#}
+    }
+</script>

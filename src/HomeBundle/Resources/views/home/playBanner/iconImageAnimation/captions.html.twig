@@ -1,0 +1,23 @@
+<script>
+    var captionsIconAnimation = document.getElementById('captionsIconAnimation');
+    var captionsIconDiv = document.getElementById('captionsIconDiv');
+
+    captionsIconDiv.addEventListener("mouseout", captionsIconOut, false);
+    captionsIconDiv.addEventListener("mouseover", captionsIconOver, false);
+    captionsIconDiv.addEventListener("click", showCaptionsArea, false);
+
+    function captionsIconOut()
+    {
+        captionsIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/playBanner/captions.png' alt='Mountain View'>";
+    }
+
+    function captionsIconOver()
+    {
+        captionsIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/playBanner/captionsOver.png' alt='Mountain View'>";
+    }
+    
+    function showCaptionsArea()
+    {
+{#        alert("verification function");#}
+    }
+</script>

@@ -1,0 +1,23 @@
+<script>
+    var dataminingIconAnimation = document.getElementById('dataminingIconAnimation');
+    var dataminingIconDiv = document.getElementById('dataminingIconDiv');
+
+    dataminingIconDiv.addEventListener("mouseout", dataminingIconOut, false);
+    dataminingIconDiv.addEventListener("mouseover", dataminingIconOver, false);
+    dataminingIconDiv.addEventListener("click", showDataminingArea, false);
+
+    function dataminingIconOut()
+    {
+        dataminingIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/presentation/datamining.png' alt='Mountain View'>";
+    }
+
+    function dataminingIconOver()
+    {
+        dataminingIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/presentation/dataminingOver.png' alt='Mountain View'>";
+    }
+    
+    function showDataminingArea()
+    {
+{#        alert("verification function");#}
+    }
+</script>

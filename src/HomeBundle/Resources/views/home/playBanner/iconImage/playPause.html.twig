@@ -1,0 +1,46 @@
+<div id='playPauseIconAnimation'
+     style="position: absolute;
+     height: 30px;
+     width: 30px;
+     top: 0px;
+     left: 0px;
+     z-index: 1;
+     transition-property: all;
+     transition-duration: 1s;">
+    <img style='
+         width:30px; 
+         height:30px; 
+         opacity: 0.9;
+         z-index: 1;' 
+         src="files/images/icons/playBanner/playPause.png" alt="Mountain View">
+</div>
+
+<div id='playPauseIconDiv'
+     style="position: absolute;
+     height: 30px;
+     width: 30px;
+     top: 0px;
+     left: 0px;
+     z-index: 1;
+     transition-property: all;
+     transition-duration: 1s;">
+</div>
+
+<script>
+    var playPauseIconDiv = document.getElementById("playPauseIconDiv");
+    
+    playPauseIconDiv.addEventListener("click", function () {
+        playPauseIconFunction();
+    });
+    
+    function playPauseIconFunction()
+    {
+        var my_video = document.getElementById("my_video");
+
+        if (my_video.paused) {
+            my_video.play();
+        } else {
+            my_video.pause();
+        }
+    }
+</script>

@@ -1,0 +1,24 @@
+<script>
+    var qualityIconAnimation = document.getElementById('qualityIconAnimation');
+    var qualityIconDiv = document.getElementById('qualityIconDiv');
+
+    qualityIconDiv.addEventListener("mouseout", qualityIconOut, false);
+    qualityIconDiv.addEventListener("mouseover", qualityIconOver, false);
+    qualityIconDiv.addEventListener("click", showQualityArea, false);
+
+    function qualityIconOut()
+    {
+        qualityIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/playBanner/quality.png' alt='Mountain View'>";
+    }
+
+    function qualityIconOver()
+    {
+        qualityIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/playBanner/qualityOver.png' alt='Mountain View'>";
+    }
+    
+    function showQualityArea()
+    {
+{#        alert("form here to create new icon... ");#}
+        
+    }
+</script>

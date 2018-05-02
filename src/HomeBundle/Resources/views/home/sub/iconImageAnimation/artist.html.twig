@@ -1,0 +1,23 @@
+<script>
+    var artistIconAnimation = document.getElementById('artistIconAnimation');
+    var artistIconDiv = document.getElementById('artistIconDiv');
+
+    artistIconDiv.addEventListener("mouseout", artistIconOut, false);
+    artistIconDiv.addEventListener("mouseover", artistIconOver, false);
+    artistIconDiv.addEventListener("click", showArtistArea, false);
+
+    function artistIconOut()
+    {
+        artistIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/presentation/artist.png' alt='Mountain View'>";
+    }
+
+    function artistIconOver()
+    {
+        artistIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/presentation/artistOver.png' alt='Mountain View'>";
+    }
+    
+    function showArtistArea()
+    {
+{#        alert("verification function");#}
+    }
+</script>

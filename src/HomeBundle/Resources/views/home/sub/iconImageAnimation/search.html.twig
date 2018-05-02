@@ -1,0 +1,23 @@
+<script>
+    var searchIconAnimation = document.getElementById('searchIconAnimation');
+    var searchIconDiv = document.getElementById('searchIconDiv');
+
+    searchIconDiv.addEventListener("mouseout", searchIconOut, false);
+    searchIconDiv.addEventListener("mouseover", searchIconOver, false);
+    searchIconDiv.addEventListener("click", showSearchArea, false);
+
+    function searchIconOut()
+    {
+        searchIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/presentation/search.png' alt='Mountain View'>";
+    }
+
+    function searchIconOver()
+    {
+        searchIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/presentation/searchOver.png' alt='Mountain View'>";
+    }
+    
+    function showSearchArea()
+    {
+{#        alert("verification function");#}
+    }
+</script>

@@ -1,0 +1,139 @@
+.tqm {
+    background-color: pink;
+}
+
+div.iconDiv {
+}
+
+div#sessionArea {
+    position: absolute;
+    z-index: 3;
+    left: 0px;
+    width: 30px;
+    top: 0px;
+    bottom: 0px;
+}
+
+div#presentationArea {
+    background-color: pink;
+    position: absolute;
+    z-index: 1;
+    right: 450px;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    transition-property: all;
+    transition-duration: 2s;
+}
+
+div#playBanner {
+    position: absolute;
+/*    opacity: 0.2;
+    background-color: gray;*/
+    height: 35px;
+    right: 450px; 
+    bottom: 0px;
+    left: 0px;
+    z-index: 4;
+}
+
+div#invisibleLayer {
+     position: absolute;
+     opacity: 0.3;
+     z-index: 2;
+     background-color: gray;
+     top: 0px;
+     bottom: 0px;
+     right: 0px;
+     left: 0px;
+}
+
+div#listBar {
+    position: absolute;
+    z-index: 3;
+    right: 0px;
+    width: 30px;
+    top: 30px;
+    bottom: 0px;
+}
+
+div#configurationArea {
+    position: absolute;
+    width: 420px;
+    top: 30px;
+    bottom: 0px;
+    right: 30px;
+    /*overflow-y: scroll;*/
+    z-index: 4;
+}
+
+div#configurationBar {
+    position: absolute;
+    z-index: 3;
+    right: 450px;
+    width: 30px;
+    top: 0px;
+    bottom: 0px;
+}
+
+div#searchBar {
+    position: absolute;
+    z-index: 3;
+    right: 0px;
+    width: 450px;
+    top: 0px;
+    height: 30px;
+}
+
+div#searchArea {
+    position: absolute;
+    z-index: 1;
+    right: 0px;
+    width: 250px;
+    top: 0px;
+    bottom: 0px;
+}
+
+div#displaceIcon-wrapper {
+    /*background-color: orange;*/
+    position: absolute;
+    right: 300px;
+    top: 90px;
+    left: 100px;
+    bottom: 10px;
+    z-index: 8;
+    opacity: 0.5;
+}
+
+div#displaceIcon {
+    /*background-color: yellow;*/
+    position: absolute;
+    right: 450px;
+    top: 90px;
+    width: 30px;
+    height: 30px;
+    z-index: 6;
+    opacity: 1;
+    transition-property: all;
+    transition-duration: 0s;
+}
+
+div#rowLeftIcon {
+    position: absolute;
+    opacity: 0.1;
+    right: 60px;
+    top: 90px;
+    width: 30px;
+    height: 30px;
+    z-index: 6;    
+}
+
+div#rowRightIcon {
+    position: absolute;
+    opacity: 0.1;
+    right: 0px;
+    top: 90px;
+    width: 30px;
+    height: 30px;
+    z-index: 6;
+}

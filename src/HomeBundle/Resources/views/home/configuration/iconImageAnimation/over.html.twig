@@ -1,0 +1,24 @@
+<script>
+    var overIconAnimation = document.getElementById('overIconAnimation');
+    var overIconDiv = document.getElementById('overIconDiv');
+
+    overIconDiv.addEventListener("mouseout", overIconOut, false);
+    overIconDiv.addEventListener("mouseover", overIconOver, false);
+    overIconDiv.addEventListener("click", showOverArea, false);
+
+    function overIconOut()
+    {
+        overIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/configuration/over.png' alt='Mountain View'>";
+    }
+
+    function overIconOver()
+    {
+        overIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/configuration/overOver.png' alt='Mountain View'>";
+    }
+    
+    function showOverArea()
+    {
+{#        alert("form here to create new icon... ");#}
+        
+    }
+</script>

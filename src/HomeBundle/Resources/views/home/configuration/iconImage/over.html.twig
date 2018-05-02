@@ -1,0 +1,77 @@
+<div id='overIconAnimation'
+     style="position: absolute;
+     height: 30px;
+     width: 30px;
+     top: 60px;
+     z-index: 3;">
+    <img style='
+         width:30px; 
+         height:30px; 
+         opacity: 0.9;
+         z-index: 1;' 
+         src="files/images/icons/configuration/over.png" alt="Mountain View">
+</div>
+
+<div id='overIconDiv'
+     style="position: absolute;
+     height: 30px;
+     width: 30px;
+     top: 60px;
+     z-index: 3;">
+</div>
+
+
+<script>
+    var overIconDiv = document.getElementById('overIconDiv');
+    var overIconAnimation = document.getElementById('overIconAnimation');
+
+    overIconDiv.addEventListener("mouseover", function () {
+        mouseoverBBB();
+    });
+    
+    overIconDiv.addEventListener("mouseout", function () {
+        mouseoutCCC();
+    });
+    
+    overIconDiv.addEventListener("click", function () {
+        clickDDD();
+    });
+
+    function mouseoverBBB()
+    {
+        
+    }
+
+    function mouseoutCCC()
+    {
+        
+    }
+
+    function clickDDD()
+    {
+        if (size === "complete")
+        {
+            document.getElementById('presentationArea').style.transitionProperty = "all";
+            document.getElementById('presentationArea').style.transitionDuration = 0.5 + "s";
+            document.getElementById('presentationArea').style.width = currentValue22 + "px";
+            
+            document.getElementById('playBanner').style.transitionProperty = "all";
+            document.getElementById('playBanner').style.transitionDuration = 0.5 + "s";
+            document.getElementById('playBanner').style.width = currentValue22 + "px";
+            
+            size = "incomplete";
+        } else if (size === "incomplete")
+        {
+            document.getElementById('presentationArea').style.transitionProperty = "all";
+            document.getElementById('presentationArea').style.transitionDuration = 0.5 + "s";
+            document.getElementById('presentationArea').style.width = 100 + "%";
+            
+            document.getElementById('playBanner').style.transitionProperty = "all";
+            document.getElementById('playBanner').style.transitionDuration = 0.5 + "s";
+            document.getElementById('playBanner').style.width = 100 + "%";
+            
+            size = "complete";
+        }
+    }
+
+</script>

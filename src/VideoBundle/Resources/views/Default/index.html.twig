@@ -1,0 +1,31 @@
+VIDEO
+
+<div id="videoBundle">
+{#    session status#}
+    {#{{ include('@Artist/Default/index.html.twig') }}#}
+</div>
+
+<script>
+    window.onload = prepareVideoBundle();
+
+    function prepareVideoBundle()
+    {
+        var form = $('#check-session-ajax');
+        var url = form.attr('action');
+
+        $.post(url, function (data)
+        {
+            var sessionStatus = data[0].sessionStatus;
+
+            if (sessionStatus === "0")
+            {
+                $("#videoBundle").append("1111");
+            } else
+            {   
+                $("#videoBundle").append("2222");
+            }
+        }).fail(function () {
+            alert('ERROR');
+        });
+    }
+</script>

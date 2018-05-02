@@ -1,0 +1,24 @@
+<script>
+    var playPauseIconAnimation = document.getElementById('playPauseIconAnimation');
+    var playPauseIconDiv = document.getElementById('playPauseIconDiv');
+
+    playPauseIconDiv.addEventListener("mouseout", playPauseIconOut, false);
+    playPauseIconDiv.addEventListener("mouseover", playPauseIconOver, false);
+    playPauseIconDiv.addEventListener("click", showPlayPauseArea, false);
+
+    function playPauseIconOut()
+    {
+        playPauseIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/playBanner/playPause.png' alt='Mountain View'>";
+    }
+
+    function playPauseIconOver()
+    {
+        playPauseIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/playBanner/playPauseOver.png' alt='Mountain View'>";
+    }
+    
+    function showPlayPauseArea()
+    {
+{#        alert("form here to create new icon... ");#}
+        
+    }
+</script>

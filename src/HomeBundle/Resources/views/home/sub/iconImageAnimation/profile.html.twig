@@ -1,0 +1,23 @@
+<script>
+    var profileIconAnimation = document.getElementById('profileIconAnimation');
+    var profileIconDiv = document.getElementById('profileIconDiv');
+
+    profileIconDiv.addEventListener("mouseout", profileIconOut, false);
+    profileIconDiv.addEventListener("mouseover", profileIconOver, false);
+    profileIconDiv.addEventListener("click", showProfileArea, false);
+
+    function profileIconOut()
+    {
+        profileIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/presentation/profile.png' alt='Mountain View'>";
+    }
+
+    function profileIconOver()
+    {
+        profileIconAnimation.innerHTML = "<img style='top: 0px; position: absolute; width:30px; height:30px; opacity: 0.9; z-index: 1;' src='files/images/icons/presentation/profileOver.png' alt='Mountain View'>";
+    }
+    
+    function showProfileArea()
+    {
+{#        alert("verification function");#}
+    }
+</script>
