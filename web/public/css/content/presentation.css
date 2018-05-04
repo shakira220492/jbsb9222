@@ -63,13 +63,13 @@ div#configurationArea {
     top: 30px;
     bottom: 0px;
     right: 30px;
-    /*overflow-y: scroll;*/
-    z-index: 4;
+    overflow: hidden;
+    z-index: 3;
 }
 
 div#configurationBar {
     position: absolute;
-    z-index: 3;
+    z-index: 4;
     right: 450px;
     width: 30px;
     top: 0px;

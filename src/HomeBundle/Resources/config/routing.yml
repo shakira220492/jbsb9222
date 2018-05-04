@@ -39,3 +39,13 @@ GUIProperties:
 home:
     path:     /
     defaults: { _controller: HomeBundle:Home:home }
+    
+get_info_about_video_form:
+    path:     /getInfoAboutVideo
+    defaults: { _controller: HomeBundle:GUIProperties:getInfoAboutVideo }
+    methods:  POST
+    
+get_comment_about_video_form:
+    path:     /getCommentAboutVideo
+    defaults: { _controller: HomeBundle:GUIProperties:getCommentAboutVideo }
+    methods:  POST

@@ -1,31 +1,270 @@
-VIDEO
-
-<div id="videoBundle">
-{#    session status#}
-    {#{{ include('@Artist/Default/index.html.twig') }}#}
+<div id="videoBundle" 
+     style="position: absolute; 
+     top: 0px;
+     bottom: 0px;
+     left: 0px;
+     right: 0px;">
+    bfgbgfbgfbgf
 </div>
 
+{#<div id='comment'
+     style='
+     position: relative;
+     overflow: hidden;'>
+
+        <div id='backgroundCommentSection'
+             style='background-color: gray;
+             opacity: 0.3;
+             top: 0px;
+             left: 0px;
+             width: 100%;
+             height: 100%;
+             position: absolute;
+             '>
+        </div>
+
+    <div id='commentSection'
+         style='position: relative;
+         opacity: 0.9;
+         top: 0px;
+         left: 0px;'>
+        <p>HERE IS THE COMMENT SECTION... chbdnjhvfbdnjkvfd vfdnjkvndfjkvdf vfdnjkvndfjkvndfjk vdfnjkvndfjkvndfjk vfdnjkvdfnjk vdfnjkvndfjk </p>
+    </div>
+    <div
+        style="position: relative;">
+        <table>
+            <tr>
+                <td>
+                    <img src='files/images/icons/like.png' alt='Mountain View' 
+                         style='width:25px; 
+                         height:25px;'>
+                </td>
+                <td>
+                    <p>
+                        124234
+                    </p>
+                </td>
+                <td>
+                    <img src='files/images/icons/dislike.png' alt='Mountain View' 
+                         style='
+                         width:25px; 
+                         height:25px;'>
+                </td>
+                <td>
+                    <p>
+                        543333
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan='4'>
+                    <p>User name - Fecha</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<br>#}
+
+
 <script>
-    window.onload = prepareVideoBundle();
+    {#    window.onload = prepareVideoBundle();#}
+        window.onload = getInfoAboutTheVideo();
+        window.onload = setInterval('getCommentAboutVideo()', 3000);
 
-    function prepareVideoBundle()
-    {
-        var form = $('#check-session-ajax');
-        var url = form.attr('action');
-
-        $.post(url, function (data)
+        function prepareVideoBundle()
         {
-            var sessionStatus = data[0].sessionStatus;
+            var form = $('#check-session-ajax');
+            var url = form.attr('action');
 
-            if (sessionStatus === "0")
+            $.post(url, function (data)
             {
-                $("#videoBundle").append("1111");
-            } else
-            {   
-                $("#videoBundle").append("2222");
-            }
-        }).fail(function () {
-            alert('ERROR');
-        });
+                var sessionStatus = data[0].sessionStatus;
+
+                if (sessionStatus === "0")
+                {
+                    $("#videoBundle").append("1111");
+                } else
+                {
+                    $("#videoBundle").append("2222");
+                }
+            }).fail(function () {
+                alert('ERROR');
+            });
+        }
+
+        function getInfoAboutTheVideo()
+        {
+            var form = $('#get-info-about-video-ajax');
+            var url = form.attr('action');
+
+    {#        var user_name = document.getElementById('user_name').value;
+            var user_password = document.getElementById('user_password').value;
+    #}
+
+            var user_name = "USER NAME";
+            var user_password = "USER PASSWORD";
+
+            $.post(url, {user_name: user_name, user_password: user_password}, function (data)
+            {
+                var videoId = data[0].videoId;
+                var videoName = data[0].videoName;
+                var videoDescription = data[0].videoDescription;
+                var videoImage = data[0].videoImage;
+                var videoContent = data[0].videoContent;
+                var videoAmountViews = data[0].videoAmountViews;
+                var videoLikes = data[0].videoLikes;
+                var videoDislikes = data[0].videoDislikes;
+                var userId = data[0].userId;
+                var userName = data[0].userName;
+                var userEmail = data[0].userEmail;
+                var userPassword = data[0].userPassword;
+
+                var videoBundle = document.getElementById("videoBundle");
+
+                videoBundle.innerHTML =
+                        "<h3>" + videoName + "</h3>" +
+                        "<h4>" + userName + "</h4>" +
+                        "<h5>" + videoAmountViews + "</h5>" +
+                        "<p>"+
+                        "<img src='files/images/icons/like.png' alt='Mountain View' " + 
+                        "style='width:25px; " + 
+                        "height:25px;'>" +
+                        " " + 
+                        videoLikes + 
+                        "<img src='files/images/icons/dislike.png' alt='Mountain View' " + 
+                        "style='width:25px; " + 
+                        "height:25px;'>" +
+                        "  " + 
+                        videoDislikes + 
+                        "<img src='files/images/icons/comment.png' alt='Mountain View' " + 
+                        "style='width:25px; " + 
+                        "height:25px;' id='commentButton'>" + 
+                        "</p>" +
+                        
+                        "<div id='commentVideoSection'" +
+                        "style='position: absolute; width: 100%; bottom: 50px; height: 400px; overflow-y: scroll; color: white; transition-property: all; transition-duration: 1s;'" +
+                        ">" +
+                        "</div>";
+
+                var currentVideo = "video" + product_id + "_" + product_name;
+                var currentProduct = document.getElementById(currentVideo);
+                currentProduct.playbackRate = 2.0;
+
+            }).fail(function () {
+                alert('ERROR... no funciona aun');
+            });
+        }
+        var i = 0;
+        function getCommentAboutVideo()
+        {
+            
+            var form = $('#get-comment-about-video-ajax');
+            var url = form.attr('action');
+
+            
+            $.post(url, function (data)
+            {
+                var commentId = data[0].commentId;
+                var commentContent = data[0].commentContent;
+                var commentLikes = data[0].commentLikes;
+                var commentDislikes = data[0].commentDislikes;
+                var commentCreationDate = data[0].commentCreationDate;
+                var userId = data[0].userId;
+                var userName = data[0].userName;
+                var videoId = data[0].videoId;
+                
+                
+            i++;
+
+            $("#commentVideoSection").append(                    
+"<div id='comment" + i + "'" +
+     "style='"+
+     "position: relative;"+
+     "overflow: hidden;'>"+
+
+        "<div id='backgroundCommentSection'"+
+             "style='background-color: gray;"+
+             "opacity: 0.3;"+
+             "top: 0px;"+
+             "left: 0px;"+
+             "width: 100%;"+
+             "height: 100%;"+
+             "position: absolute;"+
+             "'>"+
+        "</div>"+
+
+    "<div id='commentSection'"+
+         "style='position: relative;"+
+         "opacity: 0.9;"+
+         "top: 0px;"+
+         "left: 0px;'>"+
+        "<p>"+commentContent+" .... " + "</p>" +
+    "</div>"+
+    "<div"+
+        "style='position: relative;'>"+
+        "<table>"+
+            "<tr>"+
+                "<td>"+
+                    "<img src='files/images/icons/like.png' alt='Mountain View' "+
+                         "style='width:25px; "+
+                         "height:25px;'>"+
+                "</td>"+
+                "<td>"+
+                    "<p>"+
+                        commentLikes+
+                    "</p>"+
+                "</td>"+
+                "<td>"+
+                    "<img src='files/images/icons/dislike.png' alt='Mountain View' "+
+                         "style='"+
+                         "width:25px; "+
+                         "height:25px;'>"+
+                "</td>"+
+                "<td>"+
+                    "<p>"+
+                        commentDislikes+
+                    "</p>"+
+                "</td>"+
+            "</tr>"+
+            "<tr>"+
+                "<td colspan='4'>"+
+                    "<p>"+userName+" - "+commentCreationDate+"</p>"+
+                "</td>"+
+            "</tr>"+
+        "</table>"+
+    "</div>"+
+
+"</div>"+
+
+"<br>"
+);
+
+            }).fail(function () {
+                alert('ERROR... no funciona aun');
+            });
+            
+            var latestComment = "comment" + i;
+
+            var recentlyComment = document.getElementById(latestComment);
+            recentlyComment.scrollIntoView();
+            
+        }
+
+</script>
+
+<script>
+    var commentButton = document.getElementById('commentButton');
+    
+    commentButton.addEventListener("click", createComment, false);
+    
+    function createComment()
+    {
+        alert("here's a comment!");
     }
+    
+    
+    
 </script>

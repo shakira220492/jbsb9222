@@ -71,21 +71,6 @@
     var speedIconDiv = document.getElementById("speedIconDiv");
     var totalScreenIconDiv = document.getElementById("totalScreenIconDiv");
 
-    volumeIconDiv.addEventListener("click", function () {
-        volumeIconFunction();
-    });
-
-    function volumeIconFunction()
-    {
-        alert("VOLUME ICON!!! FUNCTION....");
-    }
-
-
-
-
-
-
-
     volumeIconDiv.addEventListener("mouseout", function () {
         setOutStatus();
     });
@@ -185,19 +170,13 @@
         speedIconAnimation.style.left = "190px";
         totalScreenIconAnimation.style.left = "250px";
     }
-
 </script>
 
 <script>
-
     $('#volumeController').draggable({containment: "#volumeBar", scroll: true});
-
 
     var my_video = document.getElementById("my_video");
     var volumeButtonInside = document.getElementById("volumeController");
-
-
-
 
     volumeButtonInside.addEventListener("mousedown", volumeButtonClickF, false);
 
@@ -234,8 +213,21 @@
             }
 
             my_video.volume = volumeValue / 100;
-
         }
     }
+</script>
 
+<script>
+    volumeIconDiv.addEventListener("click", function () {
+        volumeIconFunction();
+    });
+
+    function volumeIconFunction()
+    {
+        if (my_video.muted) {
+            my_video.muted = false;
+        } else {
+            my_video.muted = true;
+        }
+    }
 </script>

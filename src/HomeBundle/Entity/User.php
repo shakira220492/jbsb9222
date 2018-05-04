@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="user", indexes={@ORM\Index(name="city_id", columns={"city_id"})})
  * @ORM\Entity
  */
 class User
@@ -20,6 +20,13 @@ class User
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $userId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="city_id", type="integer", nullable=false)
+     */
+    private $cityId;
 
     /**
      * @var string
@@ -42,6 +49,13 @@ class User
      */
     private $userPassword;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="user_biography", type="text", length=65535, nullable=false)
+     */
+    private $userBiography;
+
 
 
     /**
@@ -52,6 +66,30 @@ class User
     public function getUserId()
     {
         return $this->userId;
+    }
+
+    /**
+     * Set cityId
+     *
+     * @param integer $cityId
+     *
+     * @return User
+     */
+    public function setCityId($cityId)
+    {
+        $this->cityId = $cityId;
+
+        return $this;
+    }
+
+    /**
+     * Get cityId
+     *
+     * @return integer
+     */
+    public function getCityId()
+    {
+        return $this->cityId;
     }
 
     /**
@@ -124,5 +162,29 @@ class User
     public function getUserPassword()
     {
         return $this->userPassword;
+    }
+
+    /**
+     * Set userBiography
+     *
+     * @param string $userBiography
+     *
+     * @return User
+     */
+    public function setUserBiography($userBiography)
+    {
+        $this->userBiography = $userBiography;
+
+        return $this;
+    }
+
+    /**
+     * Get userBiography
+     *
+     * @return string
+     */
+    public function getUserBiography()
+    {
+        return $this->userBiography;
     }
 }

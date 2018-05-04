@@ -16,3 +16,4 @@ log_out_user_form:
     path:     /logOutUser
     defaults: { _controller: HomeBundle:i_Session:logOutUser }
     methods:  POST
+        

@@ -41,13 +41,13 @@ class GUIPropertiesController extends Controller {
                 $selectedFieldName_Value = $selectedFieldInstance[0]['fieldName'];
                 $selectedFieldUsualmode_Value = $selectedFieldInstance[0]['fieldUsualmode'];
                 $selectedFieldCurrentmode_Value = $selectedFieldInstance[0]['fieldCurrentmode'];
-                $selectedLayoutId_Value  = $selectedFieldInstance[0]['layoutId'];
+                $selectedLayoutId_Value = $selectedFieldInstance[0]['layoutId'];
             } else {
                 $selectedFieldId_Value = "_";
                 $selectedFieldName_Value = "_";
                 $selectedFieldUsualmode_Value = "_";
                 $selectedFieldCurrentmode_Value = "_";
-                $selectedLayoutId_Value  = "_";
+                $selectedLayoutId_Value = "_";
             }
 
             $permanentField = $em->createQuery(
@@ -191,11 +191,11 @@ class GUIPropertiesController extends Controller {
             }
 
             $sendData[0] = array(
-                'fieldId' => "22", 
-                'fieldName' => "22", 
-                'fieldUsualmode' => "22", 
-                'fieldCurrentmode' => "22", 
-                'userId' => "22" 
+                'fieldId' => "22",
+                'fieldName' => "22",
+                'fieldUsualmode' => "22",
+                'fieldCurrentmode' => "22",
+                'userId' => "22"
             );
 
             return new Response(json_encode($sendData), 200, array('Content-Type' => 'application/json'));
@@ -316,12 +316,12 @@ class GUIPropertiesController extends Controller {
         $subFieldValue = $_POST['subFieldValue'];
 
         if ($request->isXMLHttpRequest()) {
-            
+
             $subFieldsAmount = 0;
             while (isset($subFieldName[$subFieldsAmount]) and isset($subFieldValue[$subFieldsAmount])) {
                 $subFieldsAmount++;
             }
-            
+
             $subFields = 0;
             while (isset($subFieldName[$subFields]) and isset($subFieldValue[$subFields])) {
 
@@ -336,14 +336,14 @@ class GUIPropertiesController extends Controller {
 
                 $subFields++;
             }
-            
-            
-            
+
+
+
             $idUser = $subFieldValue[1];
             $idLayout = $subFieldValue[2];
             $user = $em->getRepository('HomeBundle:User')->findOneByUserId($idUser);
             $layout = $em->getRepository('HomeBundle:Layout')->findOneByLayoutId($idLayout);
-            
+
             $field = new \HomeBundle\Entity\Field();
             $field->setUser($user);
             $field->setLayout($layout);
@@ -351,16 +351,15 @@ class GUIPropertiesController extends Controller {
             $field->setFieldIcon($subFieldValue[5]);
             $field->setFieldUsualmode("temporal");
             $field->setFieldCurrentmode("unselected");
-            
+
             $em->persist($field);
             $em->flush();
-            
+
             return new Response(json_encode($sendData), 200, array('Content-Type' => 'application/json'));
         }
     }
-    
-    public function setUsualModeAction(Request $request)
-    {
+
+    public function setUsualModeAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
 //
         $sessionId = $_POST['sessionId'];
@@ -369,29 +368,29 @@ class GUIPropertiesController extends Controller {
         if ($request->isXMLHttpRequest()) {
 
             $field = $em->createQuery(
-                "SELECT f.fieldId, f.fieldName, f.fieldUsualmode, f.fieldCurrentmode, u.userId 
+                    "SELECT f.fieldId, f.fieldName, f.fieldUsualmode, f.fieldCurrentmode, u.userId 
                 FROM HomeBundle:Field f 
                 JOIN HomeBundle:User u 
                 WITH u.userId = f.user  
                 WHERE u.userId = '$sessionId'"
             );
-            
+
             $fields = $field->getResult();
 
             $amountFields = 0;
-            
+
             $fieldFound211 = $em->getRepository('HomeBundle:Field')->findOneByFieldName("artistIconContent");
             $fieldFound211->setFieldUsualmode("zzz");
             $em->flush();
-            
+
             while (isset($fields[$amountFields]['fieldName'])) {
 
                 $respectlyFieldName = $fields[$amountFields]['fieldName'];
 
                 if ($respectlyFieldName === $fieldName) {
-                    
+
                     $respectlyFieldUsualmode = $fields[$amountFields]['fieldUsualmode'];
-                    
+
                     if ($respectlyFieldUsualmode === 'permanent') {
                         $fieldFound1 = $em->getRepository('HomeBundle:Field')->findOneByFieldName($respectlyFieldName);
                         $fieldFound1->setFieldUsualmode("temporal");
@@ -402,7 +401,6 @@ class GUIPropertiesController extends Controller {
                         $fieldFound3->setFieldUsualmode("permanent");
                         $em->flush();
                     }
-                    
                 } else {
                     $fieldFound2 = $em->getRepository('HomeBundle:Field')->findOneByFieldName($respectlyFieldName);
                     $fieldFound2->setFieldUsualmode("temporal");
@@ -410,7 +408,7 @@ class GUIPropertiesController extends Controller {
                 }
                 $amountFields++;
             }
-            
+
             if ($fields) {
                 $fieldId_Value = $fields[0]['fieldId'];
                 $fieldName_Value = $fields[0]['fieldName'];
@@ -424,20 +422,19 @@ class GUIPropertiesController extends Controller {
                 $fieldCurrentmode_Value = "_";
                 $userId_Value = "_";
             }
-            
+
             $sendData[0] = array(
-                'fieldId' => $fieldId_Value, 
-                'fieldName' => $fieldName_Value, 
-                'fieldUsualmode' => $fieldUsualmode_Value, 
-                'fieldCurrentmode' => $fieldCurrentmode_Value, 
+                'fieldId' => $fieldId_Value,
+                'fieldName' => $fieldName_Value,
+                'fieldUsualmode' => $fieldUsualmode_Value,
+                'fieldCurrentmode' => $fieldCurrentmode_Value,
                 'userId' => $userId_Value
             );
             return new Response(json_encode($sendData), 200, array('Content-Type' => 'application/json'));
         }
     }
-    
-    public function setCurrentModeAction(Request $request)
-    {
+
+    public function setCurrentModeAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
 //
         $sessionId = $_POST['sessionId'];
@@ -446,7 +443,7 @@ class GUIPropertiesController extends Controller {
         if ($request->isXMLHttpRequest()) {
 
             $field = $em->createQuery(
-                "SELECT f.fieldId, f.fieldName, f.fieldUsualmode, f.fieldCurrentmode, u.userId 
+                    "SELECT f.fieldId, f.fieldName, f.fieldUsualmode, f.fieldCurrentmode, u.userId 
                 FROM HomeBundle:Field f 
                 JOIN HomeBundle:User u 
                 WITH u.userId = f.user  
@@ -474,14 +471,134 @@ class GUIPropertiesController extends Controller {
             }
 
             $sendData[0] = array(
-                'fieldId' => "22", 
-                'fieldName' => "22", 
-                'fieldUsualmode' => "22", 
-                'fieldCurrentmode' => "22", 
-                'userId' => "22" 
+                'fieldId' => "22",
+                'fieldName' => "22",
+                'fieldUsualmode' => "22",
+                'fieldCurrentmode' => "22",
+                'userId' => "22"
             );
 
             return new Response(json_encode($sendData), 200, array('Content-Type' => 'application/json'));
         }
     }
+
+    public function getInfoAboutVideoAction(Request $request) {
+        if ($request->isXMLHttpRequest()) {
+
+            $em = $this->getDoctrine()->getManager();
+
+            $video = $em->createQuery(
+                    "SELECT v.videoId, v.videoName, v.videoDescription, v.videoImage, v.videoContent, v.videoAmountViews, v.videoLikes, v.videoDislikes, 
+                        u.userId, u.userName, u.userEmail, u.userPassword 
+                    FROM HomeBundle:Video v 
+                    JOIN HomeBundle:User u
+                    WITH u.userId = v.user
+                    WHERE v.videoId = '1'");
+
+            $videos = $video->getResult();
+
+            if ($videos) {
+                $videoId_Value = $videos[0]['videoId'];
+                $videoName_Value = $videos[0]['videoName'];
+                $videoDescription_Value = $videos[0]['videoDescription'];
+                $videoImage_Value = $videos[0]['videoImage'];
+                $videoContent_Value = $videos[0]['videoContent'];
+                $videoAmountViews_Value = $videos[0]['videoAmountViews'];
+                $videoLikes_Value = $videos[0]['videoLikes'];
+                $videoDislikes_Value = $videos[0]['videoDislikes'];
+                $userId_Value = $videos[0]['userId'];
+                $userName_Value = $videos[0]['userName'];
+                $userEmail_Value = $videos[0]['userEmail'];
+                $userPassword_Value = $videos[0]['userPassword'];
+            } else {
+                $videoId_Value = "_";
+                $videoName_Value = "_";
+                $videoDescription_Value = "_";
+                $videoImage_Value = "_";
+                $videoContent_Value = "_";
+                $videoAmountViews_Value = "_";
+                $videoLikes_Value = "_";
+                $videoDislikes_Value = "_";
+                $userId_Value = "_";
+                $userName_Value = "_";
+                $userEmail_Value = "_";
+                $userPassword_Value = "_";
+            }
+
+            $users2 = array();
+            $users2[0] = array(
+                'videoId' => $videoId_Value,
+                'videoName' => $videoName_Value,
+                'videoDescription' => $videoDescription_Value,
+                'videoImage' => $videoImage_Value,
+                'videoContent' => $videoContent_Value,
+                'videoAmountViews' => $videoAmountViews_Value,
+                'videoLikes' => $videoLikes_Value,
+                'videoDislikes' => $videoDislikes_Value,
+                'userId' => $userId_Value,
+                'userName' => $userName_Value,
+                'userEmail' => $userEmail_Value,
+                'userPassword' => $userPassword_Value
+            );
+            return new Response(json_encode($users2), 200, array('Content-Type' => 'application/json'));
+        }
+    }
+
+    public function getCommentAboutVideoAction (Request $request) {
+        if ($request->isXMLHttpRequest()) {
+
+            $em = $this->getDoctrine()->getManager();
+            
+            $numAle =  rand (1, 9);
+            
+            
+            $comment = $em->createQuery(
+                    "SELECT c.commentId, c.commentContent, c.commentLikes, c.commentDislikes, c.commentCreationdate, 
+                        u.userId, u.userName, 
+                        v.videoId 
+                    FROM HomeBundle:Comment c 
+                    JOIN HomeBundle:User u 
+                    WITH u.userId = c.userId 
+                    JOIN HomeBundle:Video v 
+                    WITH v.videoId = c.videoId 
+                    WHERE c.commentId = '$numAle'");
+
+            $comments = $comment->getResult();
+
+            if ($comments) {
+
+                $commentId_Value = $comments[0]['commentId'];
+                $commentContent_Value = $comments[0]['commentContent'];
+                $commentLikes_Value = $comments[0]['commentLikes'];
+                $commentDislikes_Value = $comments[0]['commentDislikes'];
+                $commentCreationDate_Value = $comments[0]['commentCreationdate'];
+                $userId_Value = $comments[0]['userId'];
+                $userName_Value = $comments[0]['userName'];
+                $videoId_Value = $comments[0]['videoId'];
+            } else {
+                $commentId_Value = "_";
+                $commentContent_Value = "_";
+                $commentLikes_Value = "_";
+                $commentDislikes_Value = "_";
+                $commentCreationDate_Value = "_";
+                $userId_Value = "_";
+                $userName_Value = "_";
+                $videoId_Value = "_";
+            }
+            
+            $users2 = array();
+            $users2[0] = array(
+                'commentId' => $commentId_Value,
+                'commentContent' => $commentContent_Value,
+                'commentLikes' => $commentLikes_Value,
+                'commentDislikes' => $commentDislikes_Value,
+                'commentCreationDate' => $commentCreationDate_Value,
+                'userId' => $userId_Value,
+                'userName' => $userName_Value,
+                'videoId' => $videoId_Value
+            );
+            return new Response(json_encode($users2), 200, array('Content-Type' => 'application/json'));
+        }
+    }
+
 }

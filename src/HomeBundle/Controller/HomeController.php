@@ -59,6 +59,23 @@ class HomeController extends Controller
         $set_currentMode_form_ajax = $this->createCustomForm(
         'HomeBundle\Form\TaskType', $taskEntity, 'POST', 'set_currentMode_form');
         
+        
+        
+
+        $get_info_about_video_form_ajax = $this->createCustomForm(
+        'HomeBundle\Form\TaskType', $taskEntity, 'POST', 'get_info_about_video_form');
+        
+        $get_comment_about_video_form_ajax = $this->createCustomForm(
+        'HomeBundle\Form\TaskType', $taskEntity, 'POST', 'get_comment_about_video_form');
+        
+        
+        
+        
+        
+        
+        
+        
+        
         return $this->render('@Home/home/home.html.twig', array(
             'get_task_properties_form_ajax' => $get_task_properties_form_ajax->createView(),
             'check_session_form_ajax' => $check_session_form_ajax->createView(),
@@ -76,8 +93,14 @@ class HomeController extends Controller
             'delete_stored_layout_form_ajax' => $delete_stored_layout_form_ajax->createView(),
             'update_form_ajax' => $update_form_ajax->createView(),
             'set_usualMode_form_ajax' => $set_usualMode_form_ajax->createView(),
-            'set_currentMode_form_ajax' => $set_currentMode_form_ajax->createView()
+            'set_currentMode_form_ajax' => $set_currentMode_form_ajax->createView(),
+            'get_info_about_video_form_ajax' => $get_info_about_video_form_ajax->createView(),
+            'get_comment_about_video_form_ajax' => $get_comment_about_video_form_ajax->createView()
         ));
+        
+        
+        
+        
         
     }
     
