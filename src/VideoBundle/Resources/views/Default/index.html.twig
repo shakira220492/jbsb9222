@@ -4,105 +4,111 @@
      bottom: 0px;
      left: 0px;
      right: 0px;">
-    bfgbgfbgfbgf
-</div>
 
-{#<div id='comment'
-     style='
-     position: relative;
-     overflow: hidden;'>
-
-        <div id='backgroundCommentSection'
-             style='background-color: gray;
-             opacity: 0.3;
-             top: 0px;
-             left: 0px;
-             width: 100%;
-             height: 100%;
-             position: absolute;
-             '>
-        </div>
-
-    <div id='commentSection'
-         style='position: relative;
-         opacity: 0.9;
-         top: 0px;
-         left: 0px;'>
-        <p>HERE IS THE COMMENT SECTION... chbdnjhvfbdnjkvfd vfdnjkvndfjkvdf vfdnjkvndfjkvndfjk vdfnjkvndfjkvndfjk vfdnjkvdfnjk vdfnjkvndfjk </p>
-    </div>
-    <div
-        style="position: relative;">
-        <table>
-            <tr>
-                <td>
-                    <img src='files/images/icons/like.png' alt='Mountain View' 
-                         style='width:25px; 
-                         height:25px;'>
-                </td>
-                <td>
-                    <p>
-                        124234
-                    </p>
-                </td>
-                <td>
-                    <img src='files/images/icons/dislike.png' alt='Mountain View' 
-                         style='
-                         width:25px; 
-                         height:25px;'>
-                </td>
-                <td>
-                    <p>
-                        543333
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td colspan='4'>
-                    <p>User name - Fecha</p>
-                </td>
-            </tr>
-        </table>
+    <div id='videoNameDiv'>
+        <h3>videoName</h3>
     </div>
 
+    <div id='userNameDiv'>
+        <h4>userName</h4>
+    </div>
+
+    <div id='videoAmountViewsDiv'>
+        <h5>videoAmountViews</h5>
+    </div>
+
+    <table>
+        <tr>
+            <td>
+                <img src='files/images/icons/like.png' alt='Mountain View' 
+                     style='width:25px; height:25px;' id='likeButton'>
+            </td>
+            <td>
+                <div id='videoLikeDiv'>
+                    <p>videoLikeDiv</p>
+                </div>
+            </td>
+            <td>
+                <img src='files/images/icons/dislike.png' alt='Mountain View' 
+                     style='width:25px; height:25px;' id='dislikeButton'>
+            </td>
+            <td>
+                <div id='videoDislikeDiv'>
+                    <p>videoDislike</p>
+                </div>
+            </td>
+            <td>
+                <img src='files/images/icons/comment.png' alt='Mountain View' 
+                     style='width:25px; height:25px;' id='commentButton'>
+            </td>
+            <td>
+                <img src='files/images/icons/dynamic.png' alt='Mountain View' 
+                     style='width:25px; height:25px;' id='dynamicButton'>
+            </td>
+            <td>
+                <img src='files/images/icons/list.png' alt='Mountain View' 
+                     style='width:25px; height:25px;' id='addToListButton'>
+            </td>
+            <td>
+                <img src='files/images/icons/moreInfo.png' alt='Mountain View' 
+                     style='width:25px; height:25px;' id='moreInfoButton'>
+            </td>
+        </tr>
+        <tr>
+            <td colspan='7'>
+                <p>userName - fecha</p>
+            </td>
+        </tr>
+    </table>
+
+    <div id='commentVideoSection'
+         style='
+         position: absolute; 
+         width: 100%; 
+         bottom: 0px; 
+         top: 200px; 
+         overflow-y: scroll; 
+         color: white; 
+         transition-property: all; 
+         transition-duration: 1s;'>
+    </div>
 </div>
-
-<br>#}
-
 
 <script>
-    {#    window.onload = prepareVideoBundle();#}
-        window.onload = getInfoAboutTheVideo();
-        window.onload = setInterval('getCommentAboutVideo()', 3000);
+    window.onload = getInfoAboutTheVideo();
+    window.onload = setInterval('getCommentAboutVideo()', 3000);
 
-        function prepareVideoBundle()
+    function prepareVideoBundle()
+    {
+        var form = $('#check-session-ajax');
+        var url = form.attr('action');
+
+        $.post(url, function (data)
         {
-            var form = $('#check-session-ajax');
-            var url = form.attr('action');
+            var sessionStatus = data[0].sessionStatus;
 
-            $.post(url, function (data)
+            if (sessionStatus === "0")
             {
-                var sessionStatus = data[0].sessionStatus;
+                $("#videoBundle").append("1111");
+            } else
+            {
+                $("#videoBundle").append("2222");
+            }
+        }).fail(function () {
+            alert('ERROR');
+        });
+    }
 
-                if (sessionStatus === "0")
-                {
-                    $("#videoBundle").append("1111");
-                } else
-                {
-                    $("#videoBundle").append("2222");
-                }
-            }).fail(function () {
-                alert('ERROR');
-            });
-        }
-
-        function getInfoAboutTheVideo()
-        {
-            var form = $('#get-info-about-video-ajax');
-            var url = form.attr('action');
+    function getInfoAboutTheVideo()
+    {
+        var form = $('#get-info-about-video-ajax');
+        var url = form.attr('action');
 
     {#        var user_name = document.getElementById('user_name').value;
             var user_password = document.getElementById('user_password').value;
     #}
+
+
 
             var user_name = "USER NAME";
             var user_password = "USER PASSWORD";
@@ -122,32 +128,20 @@
                 var userEmail = data[0].userEmail;
                 var userPassword = data[0].userPassword;
 
-                var videoBundle = document.getElementById("videoBundle");
+                var videoNameDiv = document.getElementById("videoNameDiv");
+                var userNameDiv = document.getElementById("userNameDiv");
+                var videoAmountViewsDiv = document.getElementById("videoAmountViewsDiv");
+                var videoLikeDiv = document.getElementById("videoLikeDiv");
+                var videoDislikeDiv = document.getElementById("videoDislikeDiv");
+                var videoCommentDiv = document.getElementById("videoCommentDiv");
 
-                videoBundle.innerHTML =
-                        "<h3>" + videoName + "</h3>" +
-                        "<h4>" + userName + "</h4>" +
-                        "<h5>" + videoAmountViews + "</h5>" +
-                        "<p>"+
-                        "<img src='files/images/icons/like.png' alt='Mountain View' " + 
-                        "style='width:25px; " + 
-                        "height:25px;'>" +
-                        " " + 
-                        videoLikes + 
-                        "<img src='files/images/icons/dislike.png' alt='Mountain View' " + 
-                        "style='width:25px; " + 
-                        "height:25px;'>" +
-                        "  " + 
-                        videoDislikes + 
-                        "<img src='files/images/icons/comment.png' alt='Mountain View' " + 
-                        "style='width:25px; " + 
-                        "height:25px;' id='commentButton'>" + 
-                        "</p>" +
-                        
-                        "<div id='commentVideoSection'" +
-                        "style='position: absolute; width: 100%; bottom: 50px; height: 400px; overflow-y: scroll; color: white; transition-property: all; transition-duration: 1s;'" +
-                        ">" +
-                        "</div>";
+                videoNameDiv.innerHTML = "<h3>" + videoName + "</h3>";
+                userNameDiv.innerHTML = "<h4>" + userName + "</h4>";
+                videoAmountViewsDiv.innerHTML = "<h5>" + videoAmountViews + "</h5>";
+                videoLikeDiv.innerHTML = "<p>" + videoLikes + "</p>";
+                videoDislikeDiv.innerHTML = "<p>" + videoDislikes + "</p>";
+                videoCommentDiv.innerHTML = "<p>PENDIENTE</p>";
+
 
                 var currentVideo = "video" + product_id + "_" + product_name;
                 var currentProduct = document.getElementById(currentVideo);
@@ -160,11 +154,11 @@
         var i = 0;
         function getCommentAboutVideo()
         {
-            
+
             var form = $('#get-comment-about-video-ajax');
             var url = form.attr('action');
 
-            
+
             $.post(url, function (data)
             {
                 var commentId = data[0].commentId;
@@ -175,96 +169,166 @@
                 var userId = data[0].userId;
                 var userName = data[0].userName;
                 var videoId = data[0].videoId;
-                
-                
-            i++;
 
-            $("#commentVideoSection").append(                    
-"<div id='comment" + i + "'" +
-     "style='"+
-     "position: relative;"+
-     "overflow: hidden;'>"+
 
-        "<div id='backgroundCommentSection'"+
-             "style='background-color: gray;"+
-             "opacity: 0.3;"+
-             "top: 0px;"+
-             "left: 0px;"+
-             "width: 100%;"+
-             "height: 100%;"+
-             "position: absolute;"+
-             "'>"+
-        "</div>"+
+                i++;
 
-    "<div id='commentSection'"+
-         "style='position: relative;"+
-         "opacity: 0.9;"+
-         "top: 0px;"+
-         "left: 0px;'>"+
-        "<p>"+commentContent+" .... " + "</p>" +
-    "</div>"+
-    "<div"+
-        "style='position: relative;'>"+
-        "<table>"+
-            "<tr>"+
-                "<td>"+
-                    "<img src='files/images/icons/like.png' alt='Mountain View' "+
-                         "style='width:25px; "+
-                         "height:25px;'>"+
-                "</td>"+
-                "<td>"+
-                    "<p>"+
-                        commentLikes+
-                    "</p>"+
-                "</td>"+
-                "<td>"+
-                    "<img src='files/images/icons/dislike.png' alt='Mountain View' "+
-                         "style='"+
-                         "width:25px; "+
-                         "height:25px;'>"+
-                "</td>"+
-                "<td>"+
-                    "<p>"+
-                        commentDislikes+
-                    "</p>"+
-                "</td>"+
-            "</tr>"+
-            "<tr>"+
-                "<td colspan='4'>"+
-                    "<p>"+userName+" - "+commentCreationDate+"</p>"+
-                "</td>"+
-            "</tr>"+
-        "</table>"+
-    "</div>"+
-
-"</div>"+
-
-"<br>"
-);
+                $("#commentVideoSection").append(
+                        "<div id='comment" + i + "'" +
+                        "style='" +
+                        "position: relative;" +
+                        "overflow: hidden;'>" +
+                        "<div id='backgroundCommentSection'" +
+                        "style='background-color: gray;" +
+                        "opacity: 0;" +
+                        "top: 0px;" +
+                        "left: 0px;" +
+                        "width: 100%;" +
+                        "height: 100%;" +
+                        "position: absolute;" +
+                        "'>" +
+                        "</div>" +
+                        "<div id='commentSection'" +
+                        "style='position: relative;" +
+                        "opacity: 0.9;" +
+                        "top: 0px;" +
+                        "left: 0px;'>" +
+                        "<p>" + commentContent + " .... " + "</p>" +
+                        "</div>" +
+                        "<div" +
+                        "style='position: relative;'>" +
+                        "<table>" +
+                        "<tr>" +
+                        "<td>" +
+                        "<img src='files/images/icons/like.png' alt='Mountain View' " +
+                        "style='width:25px; " +
+                        "height:25px;'>" +
+                        "</td>" +
+                        "<td>" +
+                        "<p>" +
+                        commentLikes +
+                        "</p>" +
+                        "</td>" +
+                        "<td>" +
+                        "<img src='files/images/icons/dislike.png' alt='Mountain View' " +
+                        "style='" +
+                        "width:25px; " +
+                        "height:25px;'>" +
+                        "</td>" +
+                        "<td>" +
+                        "<p>" +
+                        commentDislikes +
+                        "</p>" +
+                        "</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td colspan='4'>" +
+                        "<p>" + userName + " - " + commentCreationDate + "</p>" +
+                        "</td>" +
+                        "</tr>" +
+                        "</table>" +
+                        "</div>" +
+                        "</div>" +
+                        "<br>"
+                        );
 
             }).fail(function () {
                 alert('ERROR... no funciona aun');
             });
-            
+
             var latestComment = "comment" + i;
 
             var recentlyComment = document.getElementById(latestComment);
             recentlyComment.scrollIntoView();
-            
+
         }
 
 </script>
 
 <script>
+    var likeButton = document.getElementById('likeButton');
+    var dislikeButton = document.getElementById('dislikeButton');
     var commentButton = document.getElementById('commentButton');
-    
-    commentButton.addEventListener("click", createComment, false);
-    
-    function createComment()
+    var dynamicButton = document.getElementById('dynamicButton');
+    var addToListButton = document.getElementById('addToListButton');
+    var moreInfoButton = document.getElementById('moreInfoButton');
+
+    likeButton.addEventListener("click", addLikeToVideo, false);
+    dislikeButton.addEventListener("click", addDislikeToVideo, false);
+    commentButton.addEventListener("click", manageCommentSection, false);
+    dynamicButton.addEventListener("click", manageCommentListSection, false);
+    addToListButton.addEventListener("click", addToList, false);
+    moreInfoButton.addEventListener("click", moreInfo, false);
+
+    function addLikeToVideo()
     {
-        alert("here's a comment!");
+        var form = $('#add-like-video-ajax');
+        var url = form.attr('action');
+
+        var idUser = 1;
+        var idVideo = 1;
+        var amountLikes = 1;
+
+        $.post(url, {idUser: idUser, idVideo: idVideo, amountLikes: amountLikes}, function (data)
+        {
+            alert('SI FUNCIONA');
+        }).fail(function () {
+            alert('ERROR');
+        });
     }
-    
-    
-    
+
+    function addDislikeToVideo()
+    {
+        var form = $('#add-dislike-video-ajax');
+        var url = form.attr('action');
+
+        var idUser = 1;
+        var idVideo = 1;
+        var amountDislikes = 1;
+
+        $.post(url, {idUser: idUser, idVideo: idVideo, amountDislikes: amountDislikes}, function (data)
+        {
+            alert('SI FUNCIONA');
+        }).fail(function () {
+            alert('ERROR');
+        });
+    }
+
+    function addCommentToVideo()
+    {
+        var form = $('#add-comment-video-ajax');
+        var url = form.attr('action');
+
+        var idUser = 2;
+        var idVideo = 1;
+        var commentContent = "1_1_!_1_!!_";
+
+        $.post(url, {idUser: idUser, idVideo: idVideo, commentContent: commentContent}, function (data)
+        {
+            alert('SI FUNCIONA');
+        }).fail(function () {
+            alert('ERROR');
+        });
+    }
+
+    function manageCommentSection()
+    {
+        alert("manageCommentSection function");
+    }
+
+    function manageCommentListSection()
+    {
+        alert("manageCommentListSection function");
+    }
+
+    function addToList()
+    {
+        alert("addToList function");
+    }
+
+    function moreInfo()
+    {
+        alert("moreInfo function");
+    }
+
 </script>

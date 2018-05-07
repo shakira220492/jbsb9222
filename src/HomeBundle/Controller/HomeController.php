@@ -60,7 +60,6 @@ class HomeController extends Controller
         'HomeBundle\Form\TaskType', $taskEntity, 'POST', 'set_currentMode_form');
         
         
-        
 
         $get_info_about_video_form_ajax = $this->createCustomForm(
         'HomeBundle\Form\TaskType', $taskEntity, 'POST', 'get_info_about_video_form');
@@ -68,12 +67,14 @@ class HomeController extends Controller
         $get_comment_about_video_form_ajax = $this->createCustomForm(
         'HomeBundle\Form\TaskType', $taskEntity, 'POST', 'get_comment_about_video_form');
         
+        $add_like_video_form_ajax = $this->createCustomForm(
+        'HomeBundle\Form\TaskType', $taskEntity, 'POST', 'add_like_video_form');
         
+        $add_dislike_video_form_ajax = $this->createCustomForm(
+        'HomeBundle\Form\TaskType', $taskEntity, 'POST', 'add_dislike_video_form');
         
-        
-        
-        
-        
+        $add_comment_video_form_ajax = $this->createCustomForm(
+        'HomeBundle\Form\TaskType', $taskEntity, 'POST', 'add_comment_video_form');
         
         
         return $this->render('@Home/home/home.html.twig', array(
@@ -94,13 +95,13 @@ class HomeController extends Controller
             'update_form_ajax' => $update_form_ajax->createView(),
             'set_usualMode_form_ajax' => $set_usualMode_form_ajax->createView(),
             'set_currentMode_form_ajax' => $set_currentMode_form_ajax->createView(),
+            
             'get_info_about_video_form_ajax' => $get_info_about_video_form_ajax->createView(),
-            'get_comment_about_video_form_ajax' => $get_comment_about_video_form_ajax->createView()
+            'get_comment_about_video_form_ajax' => $get_comment_about_video_form_ajax->createView(),
+            'add_like_video_form_ajax' => $add_like_video_form_ajax->createView(),
+            'add_dislike_video_form_ajax' => $add_dislike_video_form_ajax->createView(),
+            'add_comment_video_form_ajax' => $add_comment_video_form_ajax->createView()
         ));
-        
-        
-        
-        
         
     }
     

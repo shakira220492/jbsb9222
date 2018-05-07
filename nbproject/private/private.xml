@@ -4,12 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/methods/delete.html.twig</file>
+            <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/manage.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/VideoBundle/VideoBundle.php</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/iconExplanation/profile.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/config/routes/i_Session/i_Session.yml</file>
             <file>file:/Users/martingutierrez/jbsb92/src/VideoBundle/Resources/views/Default/index.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/iconExplanationMethod/video.html.twig</file>
-            <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/presentationArea/videoArea.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/i_Session/index.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/configuration/iconImage/edit.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/configurationArea.html.twig</file>
@@ -18,7 +18,9 @@
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/HomeBundle.php</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/iconImage/artist.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/form/GUIProperties.html.twig</file>
+            <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/configuration/iconImageAnimation/edit.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/playBanner/iconImageAnimation/totalScreen.html.twig</file>
+            <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Controller/GUIPropertiesController.php</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/iconExplanationMethod/artist.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/iconExplanation/datamining.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/playBanner/iconImage/volume.html.twig</file>
@@ -26,8 +28,8 @@
             <file>file:/Users/martingutierrez/jbsb92/src/PremiumBundle/PremiumBundle.php</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/methods/draw.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/iconImageAnimation/configuration.html.twig</file>
-            <file>file:/Users/martingutierrez/jbsb92/src/VideoBundle/Resources/config/routing.yml</file>
             <file>file:/Users/martingutierrez/jbsb92/src/UploadBundle/Resources/config/routing.yml</file>
+            <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/configuration/iconImageAnimation/manage.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/playBanner/iconImage/captions.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/invisibleLayer.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/playBanner/iconImageAnimation/speed.html.twig</file>
@@ -39,27 +41,26 @@
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/iconExplanation/media.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/listBar.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/playBanner.html.twig</file>
-            <file>file:/Users/martingutierrez/jbsb92/web/public/css/content/presentation.css</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/iconExplanationMethod/configuration.html.twig</file>
+            <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/configuration/iconImage/manage.html.twig</file>
+            <file>file:/Users/martingutierrez/jbsb92/web/public/css/content/presentation.css</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/iconExplanation/list.html.twig</file>
+            <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/methods/main.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/configurationBar.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/searchBar.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/VideoBundle/Controller/DefaultController.php</file>
-            <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/iconExplanation/search.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/MediaBundle/Resources/views/Default/index.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/iconExplanationMethod/profile.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/app/Resources/views/default/index.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/playBanner/iconImage/totalScreen.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/playBanner/iconImageAnimation/quality.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/iconImageAnimation/search.html.twig</file>
-            <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/config/routing.yml</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/presentationArea.html.twig</file>
+            <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/config/routing.yml</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Controller/HomeController.php</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/iconImage/video.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/form/Session.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/iconImageAnimation/artist.html.twig</file>
-            <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/methods/set.html.twig</file>
-            <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/sessionArea.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/sub/iconImageAnimation/video.html.twig</file>
             <file>file:/Users/martingutierrez/jbsb92/src/AdvertisingBundle/Resources/config/routing.yml</file>
             <file>file:/Users/martingutierrez/jbsb92/src/HomeBundle/Resources/views/home/playBanner/iconImage/quality.html.twig</file>

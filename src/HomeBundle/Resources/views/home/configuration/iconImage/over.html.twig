@@ -2,7 +2,7 @@
      style="position: absolute;
      height: 30px;
      width: 30px;
-     top: 60px;
+     top: 30px;
      z-index: 3;">
     <img style='
          width:30px; 
@@ -16,62 +16,6 @@
      style="position: absolute;
      height: 30px;
      width: 30px;
-     top: 60px;
+     top: 30px;
      z-index: 3;">
 </div>
-
-
-<script>
-    var overIconDiv = document.getElementById('overIconDiv');
-    var overIconAnimation = document.getElementById('overIconAnimation');
-
-    overIconDiv.addEventListener("mouseover", function () {
-        mouseoverBBB();
-    });
-    
-    overIconDiv.addEventListener("mouseout", function () {
-        mouseoutCCC();
-    });
-    
-    overIconDiv.addEventListener("click", function () {
-        clickDDD();
-    });
-
-    function mouseoverBBB()
-    {
-        
-    }
-
-    function mouseoutCCC()
-    {
-        
-    }
-
-    function clickDDD()
-    {
-        if (size === "complete")
-        {
-            document.getElementById('presentationArea').style.transitionProperty = "all";
-            document.getElementById('presentationArea').style.transitionDuration = 0.5 + "s";
-            document.getElementById('presentationArea').style.width = currentValue22 + "px";
-            
-            document.getElementById('playBanner').style.transitionProperty = "all";
-            document.getElementById('playBanner').style.transitionDuration = 0.5 + "s";
-            document.getElementById('playBanner').style.width = currentValue22 + "px";
-            
-            size = "incomplete";
-        } else if (size === "incomplete")
-        {
-            document.getElementById('presentationArea').style.transitionProperty = "all";
-            document.getElementById('presentationArea').style.transitionDuration = 0.5 + "s";
-            document.getElementById('presentationArea').style.width = 100 + "%";
-            
-            document.getElementById('playBanner').style.transitionProperty = "all";
-            document.getElementById('playBanner').style.transitionDuration = 0.5 + "s";
-            document.getElementById('playBanner').style.width = 100 + "%";
-            
-            size = "complete";
-        }
-    }
-
-</script>

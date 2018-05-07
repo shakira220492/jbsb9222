@@ -2,7 +2,32 @@
 
 {% block body %}
     {{ parent() }}
-    <body>
+
+<style>
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+</style>
+
+
+    <body style="overflow: hidden;
+          background-color: white;">
 
         {{ include('@Home/home/form/Session.html.twig') }}
         {{ include('@Home/home/form/GUIProperties.html.twig') }}
@@ -41,25 +66,49 @@
         <div id="configurationBar">
             {{ include('@Home/home/sub/configurationBar.html.twig') }}
         </div>
-        
+        <div id="manage">
+            {{ include('@Home/home/sub/manage.html.twig') }}
+        </div>
+
         <div id="invisibleLayer">
             {{ include('@Home/home/sub/invisibleLayer.html.twig') }}
         </div>
-        
+
         <div id="playBanner">
             {{ include('@Home/home/sub/playBanner.html.twig') }}
         </div>
-        
+
         <div id="sessionArea">
             {{ include('@Home/home/sub/sessionArea.html.twig') }}
         </div>
+        
+        
+    
+<div id='playBannerBgColor'
+     style='
+{#     top: 0px;#}
+     z-index: 4;
+     bottom: 0px;
+     left: 0px;
+     right: 0px;
+     height: 45px;
+     background-color: gray;
+     opacity: 0.2;
+     position: absolute;
+     '>
+</div>
+        
     </body>
 
     <script>
         var icon = document.getElementById("displaceIcon");
         var displaceIconWrapper = document.getElementById("displaceIcon-wrapper");
 
-        var size = "incomplete";
+        var size = "complete";
+        var mode = "visible";
+        var bgMode = "withBg";
+
+        window.onload = paintField();
 
         document.addEventListener("mousemove", transitionDisplace, false);
         document.addEventListener("mousemove", delizeElements, false);
@@ -79,7 +128,9 @@
             document.getElementById("listBar").style.transitionDuration = "0s";
 
             document.getElementById("configurationBar").style.transitionDuration = "0s";
+            document.getElementById("manage").style.transitionDuration = "0s";
             document.getElementById('configurationArea').style.transitionDuration = "0s";
+            document.getElementById('configurationAreaBgColor').style.transitionDuration = "0s";
 
             document.getElementById('searchBar').style.transitionDuration = "0s";
 
@@ -131,7 +182,7 @@
                     document.getElementById("presentationArea").style.right = ($(window).width() - 300) + "px";
                     document.getElementById("playBanner").style.right = ($(window).width() - 300) + "px";
 
-                    document.getElementById("backgroundOptionsContent").style.width = $(window).width() - (330) + "px";
+                    document.getElementById("configurationAreaBgColor").style.width = $(window).width() - (330) + "px";
                     document.getElementById("configurationArea").style.width = $(window).width() - (330) + "px";
 
                     document.getElementById("searchBar").style.width = $(window).width() - (330) + "px";
@@ -144,7 +195,7 @@
                     document.getElementById("presentationArea").style.width = (rightPart - 30) + "px";
                     document.getElementById("playBanner").style.width = (rightPart - 30) + "px";
 
-                    document.getElementById("backgroundOptionsContent").style.width = $(window).width() - (rightPart - 30) + "px";
+                    document.getElementById("configurationAreaBgColor").style.width = $(window).width() - (rightPart - 30) + "px";
                     document.getElementById("configurationArea").style.width = $(window).width() - (rightPart - 30) + "px";
 
                     document.getElementById("searchBar").style.width = $(window).width() - (rightPart - 30) + "px";
@@ -156,29 +207,32 @@
                 {
                     if (size === "complete")
                     {
-                        document.getElementById("backgroundOptionsContent").style.width = $(window).width() - (e.pageX + 60) + "px";
+                        document.getElementById("configurationAreaBgColor").style.width = $(window).width() - (e.pageX + 60) + "px";
                         document.getElementById("configurationArea").style.width = $(window).width() - (e.pageX + 60) + "px";
 
                         document.getElementById("configurationBar").style.right = $(window).width() - (e.pageX + 30) + "px";
+                        document.getElementById("manage").style.right = $(window).width() - (e.pageX + 30) + "px";
 
                         document.getElementById("searchBar").style.width = $(window).width() - (e.pageX + 30) + "px";
 
                         document.getElementById("rowLeftIcon").style.left = e.pageX - 30 + "px";
                         document.getElementById("rowRightIcon").style.left = e.pageX + 30 + "px";
-                    } else {
+                    } else if (size === "incomplete") {
                         document.getElementById("presentationArea").style.width = e.pageX + 30 + "px";
                         document.getElementById("playBanner").style.width = e.pageX + 30 + "px";
 
-                        document.getElementById("backgroundOptionsContent").style.width = $(window).width() - (e.pageX + 60) + "px";
+                        document.getElementById("configurationAreaBgColor").style.width = $(window).width() - (e.pageX + 60) + "px";
                         document.getElementById("configurationArea").style.width = $(window).width() - (e.pageX + 60) + "px";
 
                         document.getElementById("configurationBar").style.right = $(window).width() - (e.pageX + 30) + "px";
+                        document.getElementById("manage").style.right = $(window).width() - (e.pageX + 30) + "px";
 
                         document.getElementById("searchBar").style.width = $(window).width() - (e.pageX + 30) + "px";
 
                         document.getElementById("rowLeftIcon").style.left = e.pageX - 30 + "px";
                         document.getElementById("rowRightIcon").style.left = e.pageX + 30 + "px";
                     }
+
                 }
             }
         }
@@ -219,64 +273,64 @@
         function showCloseSession(sessionStatus)
         {
             document.getElementById("btnLogOut").style.opacity = 0;
-            
+
             document.getElementById("logIn").style.opacity = 1;
             document.getElementById("user_name").style.opacity = 1;
             document.getElementById("user_password").style.opacity = 1;
             document.getElementById("btnLogIn").style.opacity = 1;
-            
-{#            alert("close");#}
-            
-            return sessionStatus;
-        }
 
-        function showOpenSession(sessionStatus)
-        {
-            document.getElementById("logIn").style.opacity = 0;
-            document.getElementById("user_name").style.opacity = 0;
-            document.getElementById("user_password").style.opacity = 0;
-            document.getElementById("btnLogIn").style.opacity = 0;
-            
-            document.getElementById("btnLogOut").style.opacity = 1;
-            
-{#            alert("open");#}
-            
-            return sessionStatus;
-        }
+        {#            alert("close");#}
 
-        function logInUser()
-        {
-            var form = $('#log-in-user-ajax');
-            var url = form.attr('action');
+                return sessionStatus;
+            }
 
-            var user_name = document.getElementById('user_name').value;
-            var user_password = document.getElementById('user_password').value;
-
-
-            if (!user_name || !user_password) {
-                alert("You need to introduce all information");
-            } else
+            function showOpenSession(sessionStatus)
             {
-                $.post(url, {user_name: user_name, user_password: user_password}, function (data)
+                document.getElementById("logIn").style.opacity = 0;
+                document.getElementById("user_name").style.opacity = 0;
+                document.getElementById("user_password").style.opacity = 0;
+                document.getElementById("btnLogIn").style.opacity = 0;
+
+                document.getElementById("btnLogOut").style.opacity = 1;
+
+        {#            alert("open");#}
+
+                return sessionStatus;
+            }
+
+            function logInUser()
+            {
+                var form = $('#log-in-user-ajax');
+                var url = form.attr('action');
+
+                var user_name = document.getElementById('user_name').value;
+                var user_password = document.getElementById('user_password').value;
+
+
+                if (!user_name || !user_password) {
+                    alert("You need to introduce all information");
+                } else
+                {
+                    $.post(url, {user_name: user_name, user_password: user_password}, function (data)
+                    {
+                        checkSession();
+                    }).fail(function () {
+                        alert('ERROR');
+                    });
+                }
+            }
+
+            function logOutUser()
+            {
+                var form = $('#log-out-user-ajax');
+                var url = form.attr('action');
+
+                $.post(url, function (data)
                 {
                     checkSession();
                 }).fail(function () {
                     alert('ERROR');
                 });
             }
-        }
-
-        function logOutUser()
-        {
-            var form = $('#log-out-user-ajax');
-            var url = form.attr('action');
-
-            $.post(url, function (data)
-            {
-                checkSession();
-            }).fail(function () {
-                alert('ERROR');
-            });
-        }
     </script>
 {% endblock %}

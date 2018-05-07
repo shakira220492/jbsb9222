@@ -15,10 +15,10 @@ div#sessionArea {
 }
 
 div#presentationArea {
-    background-color: pink;
+    background-color: black;
     position: absolute;
     z-index: 1;
-    right: 450px;
+    right: 0px;
     left: 0px;
     top: 0px;
     bottom: 0px;
@@ -30,11 +30,11 @@ div#playBanner {
     position: absolute;
 /*    opacity: 0.2;
     background-color: gray;*/
-    height: 35px;
-    right: 450px; 
+    height: 40px;
+    right: 0px; 
     bottom: 0px;
     left: 0px;
-    z-index: 4;
+    z-index: 5;
 }
 
 div#invisibleLayer {
@@ -54,17 +54,21 @@ div#listBar {
     right: 0px;
     width: 30px;
     top: 30px;
-    bottom: 0px;
+    bottom: 40px;
+    transition-property: all;
+    transition-duration: 2s;
 }
 
 div#configurationArea {
     position: absolute;
     width: 420px;
     top: 30px;
-    bottom: 0px;
+    bottom: 40px;
     right: 30px;
-    overflow: hidden;
+    /*overflow: hidden;*/
     z-index: 3;
+    transition-property: all;
+    transition-duration: 2s;
 }
 
 div#configurationBar {
@@ -72,13 +76,15 @@ div#configurationBar {
     z-index: 4;
     right: 450px;
     width: 30px;
-    top: 0px;
-    bottom: 0px;
+    top: 30px;
+    bottom: 40px;
+    transition-property: all;
+    transition-duration: 2s;
 }
 
 div#searchBar {
     position: absolute;
-    z-index: 3;
+    z-index: 4;
     right: 0px;
     width: 450px;
     top: 0px;
@@ -92,6 +98,18 @@ div#searchArea {
     width: 250px;
     top: 0px;
     bottom: 0px;
+}
+
+div#manage {
+    position: absolute;
+    z-index: 4;
+    right: 450px;
+    width: 30px;
+    height: 30px;
+    top: 0px;
+    bottom: 0px;
+    transition-property: all;
+    transition-duration: 2s;
 }
 
 div#displaceIcon-wrapper {

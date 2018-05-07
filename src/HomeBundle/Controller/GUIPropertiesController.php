@@ -20,12 +20,21 @@ class GUIPropertiesController extends Controller {
 
 //        fieldName
 
+        
         if ($request->isXMLHttpRequest()) {
 
             $user = $em->getRepository('HomeBundle:User')->findOneByUserId($sessionId);
 
+        if ($sessionId == "logOut")
+        {
             $selectedField = $em->createQuery(
-                    "SELECT f.fieldId, f.fieldName, f.fieldUsualmode, f.fieldCurrentmode, u.userId, l.layoutId 
+                "SELECT f.fieldId, f.fieldName, f.fieldUsualmode, f.fieldCurrentmode 
+                FROM HomeBundle:Field f"
+            );
+        } else
+        {
+            $selectedField = $em->createQuery(
+                "SELECT f.fieldId, f.fieldName, f.fieldUsualmode, f.fieldCurrentmode, u.userId, l.layoutId 
                 FROM HomeBundle:Field f 
                 JOIN HomeBundle:User u 
                 WITH u.userId = f.user 
@@ -33,6 +42,8 @@ class GUIPropertiesController extends Controller {
                 WITH l.layoutId = f.layout 
                 WHERE u.userId = '$sessionId' and f.fieldName = '$fieldName'"
             );
+        }
+            
 
             $selectedFieldInstance = $selectedField->getResult();
 
@@ -41,17 +52,25 @@ class GUIPropertiesController extends Controller {
                 $selectedFieldName_Value = $selectedFieldInstance[0]['fieldName'];
                 $selectedFieldUsualmode_Value = $selectedFieldInstance[0]['fieldUsualmode'];
                 $selectedFieldCurrentmode_Value = $selectedFieldInstance[0]['fieldCurrentmode'];
-                $selectedLayoutId_Value = $selectedFieldInstance[0]['layoutId'];
             } else {
                 $selectedFieldId_Value = "_";
                 $selectedFieldName_Value = "_";
                 $selectedFieldUsualmode_Value = "_";
                 $selectedFieldCurrentmode_Value = "_";
-                $selectedLayoutId_Value = "_";
             }
 
+            
+        if ($sessionId == "logOut")
+        {
             $permanentField = $em->createQuery(
-                    "SELECT f.fieldId, f.fieldName, f.fieldUsualmode, f.fieldCurrentmode, u.userId, l.layoutId 
+                "SELECT f.fieldId, f.fieldName, f.fieldUsualmode, f.fieldCurrentmode 
+                FROM HomeBundle:Field f 
+                WHERE f.fieldUsualmode = 'permanent'"
+            );
+        } else
+        {
+            $permanentField = $em->createQuery(
+                "SELECT f.fieldId, f.fieldName, f.fieldUsualmode, f.fieldCurrentmode, u.userId, l.layoutId 
                 FROM HomeBundle:Field f 
                 JOIN HomeBundle:User u 
                 WITH u.userId = f.user 
@@ -59,7 +78,8 @@ class GUIPropertiesController extends Controller {
                 WITH l.layoutId = f.layout 
                 WHERE u.userId = '$sessionId' and f.fieldUsualmode = 'permanent'"
             );
-
+        }
+        
             $permanentFieldInstance = $permanentField->getResult();
 
             if ($permanentFieldInstance) {
@@ -67,21 +87,22 @@ class GUIPropertiesController extends Controller {
                 $permanentFieldName_Value = $permanentFieldInstance[0]['fieldName'];
                 $permanentFieldUsualmode_Value = $permanentFieldInstance[0]['fieldUsualmode'];
                 $permanentFieldCurrentmode_Value = $permanentFieldInstance[0]['fieldCurrentmode'];
-                $permanentLayoutId_Value = $permanentFieldInstance[0]['layoutId'];
             } else {
                 $permanentFieldId_Value = "_";
                 $permanentFieldName_Value = "_";
                 $permanentFieldUsualmode_Value = "_";
                 $permanentFieldCurrentmode_Value = "_";
-                $permanentLayoutId_Value = "_";
             }
+            
+            $selectedLayoutId_Value = "";
+            $permanentLayoutId_Value = "";
 
             $sendData[0] = array(
                 'selectedFieldId' => $selectedFieldId_Value,
                 'selectedFieldName' => $selectedFieldName_Value,
                 'selectedFieldUsualmode' => $selectedFieldUsualmode_Value,
                 'selectedFieldCurrentmode' => $selectedFieldCurrentmode_Value,
-                'selectedLayoutId' => $selectedLayoutId_Value,
+                'selectedLayoutId_Value' => $selectedLayoutId_Value,
                 'permanentFieldId' => $permanentFieldId_Value,
                 'permanentFieldName' => $permanentFieldName_Value,
                 'permanentFieldUsualmode' => $permanentFieldUsualmode_Value,
@@ -600,5 +621,88 @@ class GUIPropertiesController extends Controller {
             return new Response(json_encode($users2), 200, array('Content-Type' => 'application/json'));
         }
     }
+    
+    public function addLikeVideoAction (Request $request) {
+        if ($request->isXMLHttpRequest()) {
 
+            $em = $this->getDoctrine()->getManager();
+            
+//            $.post(url, {idUser: idUser, idVideo:idVideo, amountLikes:amountLikes}, function (data)
+            
+            $idUser = $_POST['idUser'];
+            $idVideo = $_POST['idVideo'];
+            $amountLikes = $_POST['amountLikes'];
+                        
+            $video = $em->getRepository('HomeBundle:Video')->findOneByVideoId($idVideo);
+            
+            $video->setVideoLikes($amountLikes);
+            
+            $em->persist($video);
+            $em->flush();
+            
+            $users2 = array();
+            $users2[0] = array(
+                'variable' => "funciona"
+            );
+            return new Response(json_encode($users2), 200, array('Content-Type' => 'application/json'));
+        }
+    }
+    
+    public function addDislikeVideoAction (Request $request) {
+        if ($request->isXMLHttpRequest()) {
+
+            $em = $this->getDoctrine()->getManager();
+            
+//                    $.post(url, {idUser: idUser, idVideo:idVideo, amountDislikes:amountDislikes}, function (data)
+                        
+            $idUser = $_POST['idUser'];
+            $idVideo = $_POST['idVideo'];
+            $amountDislikes = $_POST['amountDislikes'];
+            
+            $video = $em->getRepository('HomeBundle:Video')->findOneByVideoId($idVideo);
+            
+            $video->setVideoDislikes($amountDislikes);
+            
+            $em->persist($video);
+            $em->flush();
+            
+            $users2 = array();
+            $users2[0] = array(
+                'variable' => "funciona"
+            );
+            return new Response(json_encode($users2), 200, array('Content-Type' => 'application/json'));
+        }
+    }
+    
+    public function addCommentVideoAction (Request $request) {
+        if ($request->isXMLHttpRequest()) {
+
+            $em = $this->getDoctrine()->getManager();
+            
+            $idUser = $_POST['idUser'];
+            $idVideo = $_POST['idVideo'];
+            $commentContent = $_POST['commentContent'];
+            
+            $user = $em->getRepository('HomeBundle:User')->findOneByUserId($idUser);
+            $video = $em->getRepository('HomeBundle:Video')->findOneByVideoId($idVideo);
+            
+            
+            $comment = new \HomeBundle\Entity\Comment();
+            $comment->setCommentContent($commentContent);
+            $comment->setUserId($idUser);
+            $comment->setVideoId($idVideo);
+            $comment->setCommentLikes(22);
+            $comment->setCommentDislikes(22);
+            $comment->setCommentCreationdate("22-04-1992");
+            
+            $em->persist($comment);
+            $em->flush();
+            
+            $users2 = array();
+            $users2[0] = array(
+                'variable' => "funciona"
+            );
+            return new Response(json_encode($users2), 200, array('Content-Type' => 'application/json'));
+        }
+    }
 }
